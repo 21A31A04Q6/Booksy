@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booksy - Sign Up & Sign In</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        nav {
+            background-color: #ffab40;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            border-radius: 0 0 10px 10px;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+        nav ul li {
+            display: inline;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            transition: background-color 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        nav ul li a:hover, nav ul li a:focus, nav ul li a.active {
+            background-color: #ff7043;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            width: 350px;
+            text-align: center;
+            margin-top: 60px; /* Adjusted for fixed navbar */
+        }
+        h2 {
+            color: #333;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #ffab40;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #ff9800;
+        }
+        .toggle {
+            margin-top: 10px;
+            color: #007bff;
+            cursor: pointer;
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="index.html" class="home-link"><i class="fas fa-home icon"></i>Home</a></li>
+            <li><a href="shopping.html"><i class="fas fa-shopping-cart icon"></i>Shopping Cart</a></li>
+            <li><a href="create_publish.html"><i class="fas fa-book icon"></i>Create & Publish</a></li>
+        </ul>
+    </nav>
+    
+    <!-- Sign Up / Sign In Form -->
+    <div class="container">
+        <h2 id="form-title">Sign Up</h2>
+        <form id="auth-form">
+            <input type="text" id="name" placeholder="Full Name" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Sign Up</button>
+        </form>
+        <p class="toggle" onclick="toggleForm()">Already have an account? Sign In</p>
+    </div>
+
+    <script>
+        function toggleForm() {
+            let formTitle = document.getElementById("form-title");
+            let form = document.getElementById("auth-form");
+            let toggleText = document.querySelector(".toggle");
+            
+            if (formTitle.innerText === "Sign Up") {
+                formTitle.innerText = "Sign In";
+                form.innerHTML = `
+                    <input type="email" id="email" placeholder="Email" required>
+                    <input type="password" id="password" placeholder="Password" required>
+                    <button type="submit">Sign In</button>
+                `;
+                toggleText.innerText = "Don't have an account? Sign Up";
+            } else {
+                formTitle.innerText = "Sign Up";
+                form.innerHTML = `
+                    <input type="text" id="name" placeholder="Full Name" required>
+                    <input type="email" id="email" placeholder="Email" required>
+                    <input type="password" id="password" placeholder="Password" required>
+                    <button type="submit">Sign Up</button>
+                `;
+                toggleText.innerText = "Already have an account? Sign In";
+            }
+        }
+    </script>
+</body>
+</html>
